@@ -8,3 +8,27 @@
     font-size: 5rem;
     font-family: "courier new";
 }
+
+.btnLogout,
+.btnLoginPage {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    display: inline-block;
+    padding: 10px 80px;
+    font-weight: bold;
+    background-color: greenyellow;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #ff5d5d;
+        color: white;
+    }
+}
+
+.btnLoginPage {
+    top: 5%;
+    right: 1%;
+}

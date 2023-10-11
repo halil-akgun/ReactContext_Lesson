@@ -13,13 +13,7 @@ const LoginPage = () => {
     });
     const navigate = useNavigate();
 
-    const token = localStorage.getItem("token");
-
     const { authDispatch, authState } = useContext(AuthContext);
-
-    if (token && authState.isAuthenticated && authState.user) {
-        return <Navigate to="/" />;
-    }
 
     const handleChange = (event) => {
         setFormData((prev) => ({
@@ -27,6 +21,8 @@ const LoginPage = () => {
             [event.target.name]: event.target.value,
         }));
     };
+
+    console.log(authState);
 
     // rshawe2
     // OWsTbMUgFc
@@ -41,6 +37,11 @@ const LoginPage = () => {
                 body: JSON.stringify(values),
             });
             const user = await response.json();
+            if (user.message) {
+                console.log(user.message);
+                authDispatch(logout());
+                return;
+            }
             console.log(user);
             authDispatch(login(user));
             localStorage.setItem("token", user.token);
